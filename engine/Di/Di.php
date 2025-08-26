@@ -13,6 +13,11 @@ class Di
 
     public function get($key): ?string
     {
-        return $this->container[$key];
+        return $this->hasKey($key);
+    }
+
+    public function hasKey($key): ?string
+    {
+        return $this->container[$key] ?? false;
     }
 }
