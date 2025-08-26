@@ -11,12 +11,12 @@ class Di
         $this->container[$key] = $value;
     }
 
-    public function get($key): ?string
+    public function get($key): mixed
     {
         return $this->hasKey($key);
     }
 
-    public function hasKey($key): ?string
+    public function hasKey($key): mixed
     {
         return $this->container[$key] ?? false;
     }
