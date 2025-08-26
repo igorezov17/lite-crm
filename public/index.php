@@ -1,10 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../vendor/autoload.php";
-
-use Engine\Di\Di;
-
-$di = new Di();
+require_once __DIR__ . '/../engine/bootstrap.php';
 
 
-dd("test data !!!");
+// dd("test data !!!");
