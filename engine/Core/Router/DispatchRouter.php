@@ -11,7 +11,7 @@ class DispatchRouter
     )
     {}
 
-    public function getontroller()
+    public function getController()
     {
         return $this->controller;
     }
