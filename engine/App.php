@@ -3,6 +3,7 @@
 namespace Engine;
 
 use Engine\Di\Di;
+use Engine\Core\Router\Router;
 
 class App
 {
@@ -14,6 +15,9 @@ class App
 
     public function run():void
     {
-        dd($this->di->get('router'));
+        $router = $this->di->get('router');
+        $router->add('/', '/', 'HomeController');
+
+        dd($this->di);
     }
 }

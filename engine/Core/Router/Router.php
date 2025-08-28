@@ -2,11 +2,11 @@
 
 namespace Engine\Core\Router;
 
-class Router implements RouterInterface
+class Router
 {
     public $routes = [];
 
-    public $dispatch;
+    public $dispatcher;
 
     public function add(string $key, string $pattern, string $controller, string $method = 'GET'):void
     {
@@ -17,8 +17,27 @@ class Router implements RouterInterface
         ];
     }
 
-    public function dispatch()
+    /**
+     * @param string $url
+     * @param string $method
+     * @return DispatchRouter
+     */
+    public function dispatch(string $url, string $method):DispatchRouter
     {
+        return $this->getDispatcher()->dispatch($url, $method);
+    }
+
+    private function getDispatcher()
+    {
+        if ($this->dispatcher === null) {
+            $this->dispatcher = new UrlDispatcher();
+        }
+
+        foreach($this->routes as $route) {
+            $this->dispatcher->register($route['pattern'], $route['controller'], $route['method']);
+        }
+
+        return $this->dispatcher;
 
     }
 }
