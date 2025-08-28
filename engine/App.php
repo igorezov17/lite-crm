@@ -24,9 +24,10 @@ class App
      */
     public function run():void
     {
-        $router = $this->di->get('router');
+        $router     = $this->di->get('router');
+        $request    = $this->di->get('request');
 
-        $dispatcher = $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+        $dispatcher = $router->dispatch($request->getUrl(), $request->getMethod());
 
         if (!$dispatcher) {
             $dispatcher = new DispatchController('App\Controllers\ErrorController:pageNotFound', []);
