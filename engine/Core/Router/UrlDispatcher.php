@@ -17,9 +17,9 @@ class UrlDispatcher
      * @param string $method
      * @return void
      */
-    public function register(string $pattern, string $controller, string $method):void
+    public function register(object $route):void
     {
-        $this->routeGroups[$method][$pattern] = $controller;
+        $this->routeGroups[$route->getMethod()][$route->getUrl()] = $route;
     }
 
     /**
@@ -34,12 +34,12 @@ class UrlDispatcher
     /**
      * @param string $url
      * @param string $method
-     * @return ?DispatchRouter
+     * @return ?DispatchController
      */
-    public function dispatch(string $url, string $method): ?DispatchRouter
+    public function dispatch(string $url, string $method): ?DispatchController
     {
         $routes = $this->getRoutes($method);
-        return array_key_exists($url, $routes) ? new DispatchRouter($routes[$url], []) : null;
+        return array_key_exists($url, $routes) ? new DispatchController($routes[$url]->getAction(), []) : null;
     }
 }
 

@@ -2,9 +2,11 @@
 
 namespace Engine;
 
-use Engine\Core\Router\DispatchRouter;
+use Engine\Core\Router\DispatchController;
 use Engine\Di\Di;
 use Engine\Core\Router\Router;
+
+
 
 class App
 {
@@ -22,19 +24,16 @@ class App
      */
     public function run():void
     {
-        $router = $this->di->get('router');
-        $router->add('/home', '/home', 'HomeController:index');
-        $router->add('/new', '/new/(int:id)', 'NewController:index');
+        $router     = $this->di->get('router');
+        $request    = $this->di->get('request');
 
-        $dispatcher = $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+        $dispatcher = $router->dispatch($request->getUrl(), $request->getMethod());
 
         if (!$dispatcher) {
-            $dispatcher = new DispatchRouter('ErrorController:pageNotFound', []);
+            $dispatcher = new DispatchController('App\Controllers\ErrorController:pageNotFound', []);
         }
 
         [$controller, $action] = explode(":", $dispatcher->getController());
-
-        $controller = "App\\Controllers\\" . $controller;
 
         call_user_func_array([new $controller($this->di), $action], []);
     }
