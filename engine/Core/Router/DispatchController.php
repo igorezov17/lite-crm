@@ -2,7 +2,7 @@
 
 namespace Engine\Core\Router;
 
-class DispatchRouter
+class DispatchController
 {
 
     public function __construct(

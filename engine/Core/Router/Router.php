@@ -4,55 +4,35 @@ namespace Engine\Core\Router;
 
 class Router
 {
-    /** 
-     * @var array
-     */
-    public $routes = [];
+    public function __construct(
+        private string $url,
+        private string $method,
+        private string $action,
+    )
+    {}
 
-    /** 
-     * @var UrlDispatcher
-     */
-    public $dispatcher;
-
-    /** 
-     * @param string $key
-     * @param string $pattern
-     * @param string $controller
-     * @param string $method
-     * @return void
-     */
-    public function add(string $key, string $pattern, string $controller, string $method = 'GET'):void
+    public static function get($url, $action):static
     {
-        $this->routes[$key] = [
-            'pattern'       => $pattern,
-            'controller'    => $controller,
-            'method'        => $method
-        ];
+        return new static($url, 'GET', $action);
     }
 
-    /**
-     * @param string $url
-     * @param string $method
-     * @return DispatchRouter
-     */
-    public function dispatch(string $url, string $method):?DispatchRouter
+    public static function post($url, $action) 
     {
-        return $this->getDispatcher()->dispatch($url, $method);
+        return new static($url, 'POST', $action);
     }
 
-    /**
-     * @return UrlDispatcher
-     */
-    private function getDispatcher()
+    public function getUrl()
     {
-        if ($this->dispatcher === null) {
-            $this->dispatcher = new UrlDispatcher();
-        }
+        return $this->url;
+    }
 
-        foreach($this->routes as $route) {
-            $this->dispatcher->register($route['pattern'], $route['controller'], $route['method']);
-        }
+    public function getMethod()
+    {
+        return $this->method;
+    }
 
-        return $this->dispatcher;
+    public function getAction()
+    {
+        return $this->action;
     }
 }

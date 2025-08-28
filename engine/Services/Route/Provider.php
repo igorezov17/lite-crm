@@ -2,7 +2,7 @@
 
 namespace Engine\Services\Route;
 
-use Engine\Core\Router\Router;
+use Engine\Core\Router\RouteDispatcher;
 use Engine\Services\AbstractProvider;
 
 class Provider extends AbstractProvider
@@ -12,7 +12,7 @@ class Provider extends AbstractProvider
 
     public function init():void
     {
-        $router = new Router();
+        $router = new RouteDispatcher();
         $this->di->set($this->serviceName, $router);
     }
 }
