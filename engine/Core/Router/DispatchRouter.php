@@ -18,7 +18,7 @@ class DispatchRouter
 
     public function getAction()
     {
-        return $this->controller;
+        return $this->action;
     }
 
 }

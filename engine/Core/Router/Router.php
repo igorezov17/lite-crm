@@ -4,10 +4,23 @@ namespace Engine\Core\Router;
 
 class Router
 {
+    /** 
+     * @var array
+     */
     public $routes = [];
 
+    /** 
+     * @var UrlDispatcher
+     */
     public $dispatcher;
 
+    /** 
+     * @param string $key
+     * @param string $pattern
+     * @param string $controller
+     * @param string $method
+     * @return void
+     */
     public function add(string $key, string $pattern, string $controller, string $method = 'GET'):void
     {
         $this->routes[$key] = [
@@ -22,11 +35,14 @@ class Router
      * @param string $method
      * @return DispatchRouter
      */
-    public function dispatch(string $url, string $method):DispatchRouter
+    public function dispatch(string $url, string $method):?DispatchRouter
     {
         return $this->getDispatcher()->dispatch($url, $method);
     }
 
+    /**
+     * @return UrlDispatcher
+     */
     private function getDispatcher()
     {
         if ($this->dispatcher === null) {
@@ -38,6 +54,5 @@ class Router
         }
 
         return $this->dispatcher;
-
     }
 }
