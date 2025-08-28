@@ -9,16 +9,22 @@ use Engine\Core\Router\Router;
 class App
 {
 
+    /** 
+     * @var Di
+     */
     public function __construct(
         public Di $di,
     )
     {}
 
+    /** 
+     * @return void
+     */
     public function run():void
     {
         $router = $this->di->get('router');
-        $router->add('/home', '/home', 'HomeController');
-        $router->add('/new', '/new/(int:id)', 'NewController');
+        $router->add('/home', '/home', 'HomeController:index');
+        $router->add('/new', '/new/(int:id)', 'NewController:index');
 
         $dispatcher = $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
