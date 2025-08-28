@@ -39,13 +39,6 @@ class UrlDispatcher
     public function dispatch(string $url, string $method): ?DispatchController
     {
         $routes = $this->getRoutes($method);
-
-        // foreach($routes as $key => $route) {
-        //     dd($route);
-        // }
-
-    //    dd($routes[$url]->getAction());
-
         return array_key_exists($url, $routes) ? new DispatchController($routes[$url]->getAction(), []) : null;
     }
 }

@@ -5,30 +5,9 @@ namespace Engine\Core\Router;
 class RouteDispatcher
 {
     /** 
-     * @var array
-     */
-    public $routes = [];
-
-    /** 
      * @var UrlDispatcher
      */
     public $dispatcher;
-
-    // /** 
-    //  * @param string $key
-    //  * @param string $pattern
-    //  * @param string $controller
-    //  * @param string $method
-    //  * @return void
-    //  */
-    // public function add(string $key, string $pattern, string $controller, string $method = 'GET'):void
-    // {
-    //     $this->routes[$key] = [
-    //         'pattern'       => $pattern,
-    //         'controller'    => $controller,
-    //         'method'        => $method
-    //     ];
-    // }
 
     private function getRoutes():?iterable
     {
@@ -54,14 +33,7 @@ class RouteDispatcher
             $this->dispatcher = new UrlDispatcher();
         }
 
-        // foreach($this->routes as $route) {
         foreach($this->getRoutes() as $route) {
-
-            // echo "<pre>";
-            // print_r($route->getUrl());
-            // echo "</pre>";
-
-            // $this->dispatcher->register($route['pattern'], $route['controller'], $route['method']);
             $this->dispatcher->register($route);
         }
 
