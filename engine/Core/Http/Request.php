@@ -24,12 +24,12 @@ class Request
         );
     }
 
-    public function getUrl()
+    public function getUrl():string
     {
         return strtok($this->server['REQUEST_URI'], '?') ;
     }
 
-    public function getMethod()
+    public function getMethod():string
     {
         return $this->server['REQUEST_METHOD'];
     }

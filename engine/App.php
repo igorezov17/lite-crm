@@ -6,11 +6,8 @@ use Engine\Core\Router\DispatchController;
 use Engine\Container\Di;
 use Engine\Core\Router\Router;
 
-
-
 class App
 {
-
     /** 
      * @var Di
      */
@@ -26,7 +23,6 @@ class App
     {
         $router     = $this->di->get('router');
         $request    = $this->di->get('request');
-
         $dispatcher = $router->dispatch($request->getUrl(), $request->getMethod());
 
         if (!$dispatcher) {

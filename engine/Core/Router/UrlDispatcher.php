@@ -2,6 +2,10 @@
 
 namespace Engine\Core\Router;
 
+/**
+ * @property array $routeGroups 
+ * @property array $pattern 
+ */
 class UrlDispatcher
 {
     public $routeGroups = [
