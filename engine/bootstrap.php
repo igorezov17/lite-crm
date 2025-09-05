@@ -1,6 +1,6 @@
 <?php
 
-use Engine\Di\Di;
+use Engine\Container\Di;
 use Engine\App;
 
 try {

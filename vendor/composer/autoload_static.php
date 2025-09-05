@@ -18,6 +18,10 @@ class ComposerStaticInit0f5f390c969a720d16bd1aa2812d3a6d
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
         ),
+        'P' => 
+        array (
+            'Psr\\Container\\' => 14,
+        ),
         'E' => 
         array (
             'Engine\\' => 7,
@@ -36,6 +40,10 @@ class ComposerStaticInit0f5f390c969a720d16bd1aa2812d3a6d
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'Engine\\' => 
         array (

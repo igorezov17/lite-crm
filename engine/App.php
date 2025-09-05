@@ -3,7 +3,7 @@
 namespace Engine;
 
 use Engine\Core\Router\DispatchController;
-use Engine\Di\Di;
+use Engine\Container\Di;
 use Engine\Core\Router\Router;
 
 

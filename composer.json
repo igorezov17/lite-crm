@@ -17,5 +17,8 @@
     "minimum-stability": "dev",
     "require-dev": {
         "symfony/var-dumper": "7.4.x-dev"
+    },
+    "require": {
+        "psr/container": "^2.0@dev"
     }
 }
