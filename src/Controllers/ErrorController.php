@@ -6,8 +6,8 @@ use Engine\Controller;
 
 class ErrorController extends Controller
 {
-    public function pageNotFound():string
+    public function pageNotFound():void
     {
-        return '404 | Page not found';
+        echo '404 | Page not found';
     }
 }

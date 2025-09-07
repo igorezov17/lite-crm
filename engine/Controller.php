@@ -2,7 +2,7 @@
 
 namespace Engine;
 
-use Engine\Di\Di;
+use Engine\Container\Di;
 
 class Controller
 {

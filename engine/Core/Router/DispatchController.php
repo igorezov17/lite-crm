@@ -4,7 +4,6 @@ namespace Engine\Core\Router;
 
 class DispatchController
 {
-
     public function __construct(
         private string $controller,
         private array $action

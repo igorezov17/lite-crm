@@ -2,11 +2,11 @@
 
 namespace Engine\Core\Router;
 
+/**
+ * @property UrlDispatcher $dispatcher 
+ */
 class RouteDispatcher
 {
-    /** 
-     * @var UrlDispatcher
-     */
     public $dispatcher;
 
     private function getRoutes():?iterable
