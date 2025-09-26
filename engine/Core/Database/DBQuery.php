@@ -24,20 +24,21 @@ class DBQuery
         }
     }
 
-    public function execute(string $sql) 
+    public function execute(string $sql, array $params = []):void
     {
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute($params);
     }
 
     public function query(string $sql, array $params = []):array
     {
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute($params);
 
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $data ?? [];
+        $data = [];
+        while($row = $stmt->fetch()) {
+            $data[] = $row;
+        }
+        return $data;
     }
-
 }
