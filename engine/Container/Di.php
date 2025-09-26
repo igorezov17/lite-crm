@@ -9,11 +9,22 @@ class Di implements ContainerInterface
 {
     private array $services = [];
 
+    /**
+     * @param string $key
+     * @param mixed $value
+     * 
+     * @return void
+     */
     public function set(string $key, $value):void
     {
         $this->services[$key] = $value;
     }
 
+    /**
+     * @param mixed $key
+     * 
+     * @return mixed
+     */
     public function get($key): mixed
     {
         if (!$this->has($key)) {
@@ -23,6 +34,11 @@ class Di implements ContainerInterface
         return $this->services[$key];
     }
 
+    /**
+     * @param mixed $key
+     * 
+     * @return bool
+     */
     public function has($key):bool
     {
         return isset($this->services[$key]);

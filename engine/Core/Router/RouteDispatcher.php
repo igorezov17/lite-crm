@@ -9,6 +9,9 @@ class RouteDispatcher
 {
     public $dispatcher;
 
+    /**
+     * @return iterable|null
+     */
     private function getRoutes():?iterable
     {
         return require APP_DIR . '/engine/Config/routes.php';
@@ -17,7 +20,8 @@ class RouteDispatcher
     /**
      * @param string $url
      * @param string $method
-     * @return DispatchController
+     * 
+     * @return DispatchController|null
      */
     public function dispatch(string $url, string $method):?DispatchController
     {

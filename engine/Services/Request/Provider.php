@@ -7,7 +7,7 @@ use Engine\Services\AbstractProvider;
 
 class Provider extends AbstractProvider
 {
-    public $serviceName = 'request';
+    private $serviceName = 'request';
 
     public function init():void
     {

@@ -4,6 +4,12 @@ namespace Engine\Core\Template;
 
 class View
 {
+    /**
+     * @param string $name
+     * @param array $data
+     * 
+     * @return void
+     */
     public function render(string $name, array $data = []):void
     {
         $fileName = APP_DIR . "/resources/views/" . $name . ".php";

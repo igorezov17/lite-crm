@@ -24,12 +24,24 @@ class DBQuery
         }
     }
 
+    /**
+     * @param string $sql
+     * @param array $params
+     * 
+     * @return void
+     */
     public function execute(string $sql, array $params = []):void
     {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
     }
 
+    /**
+     * @param string $sql
+     * @param array $params
+     * 
+     * @return array
+     */
     public function query(string $sql, array $params = []):array
     {
         $stmt = $this->pdo->prepare($sql);

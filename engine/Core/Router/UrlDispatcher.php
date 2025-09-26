@@ -8,17 +8,14 @@ namespace Engine\Core\Router;
  */
 class UrlDispatcher
 {
-    public $routeGroups = [
+    private $routeGroups = [
         'GET'   => [],
         'POST'  => []
     ];
 
-    private $pattern = ['int' => '[0-9]+'];
-
     /**
-     * @param string $pattern
-     * @param string $controller
-     * @param string $method
+     * @param object $route
+     * 
      * @return void
      */
     public function register(object $route):void
@@ -28,17 +25,19 @@ class UrlDispatcher
 
     /**
      * @param string $method
-     * @return ?array
+     * 
+     * @return array
      */
-    public function getRoutes($method):?array
+    public function getRoutes(string $method):array
     {
-        return $this->routeGroups[$method] ?? null;
+        return $this->routeGroups[$method];
     }
 
     /**
      * @param string $url
      * @param string $method
-     * @return ?DispatchController
+     * 
+     * @return DispatchController|null
      */
     public function dispatch(string $url, string $method): ?DispatchController
     {
