@@ -12,12 +12,14 @@ class Controller
 
     protected DBQuery $db;
 
+    protected Load $load;
+
     public function __construct(
         protected Di $di,
-
     )
     {
         $this->view = $this->di->get('view');
         $this->db   = $this->di->get('db');
+        $this->load = $this->di->get('load');
     }
 }
