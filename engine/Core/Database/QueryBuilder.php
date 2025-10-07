@@ -70,27 +70,35 @@ class QueryBuilder
      * 
      * @return string
      */
-    public function insert(string $table, array $params):string
+    // public function insert(string $table, array $params):string
+    // {
+    //     $this->reset();
+    //     $insert     = "INSERT INTO {$table} ";
+    //     $columns    = '(';
+    //     $values     = '(';
+    //     if (!empty($params)) {
+    //         foreach($params as $column => $value) {
+    //             $this->params[] = $value;
+    //             $columns .= "{$column}";
+    //             $values  .= "?";
+    //             if (next($params)) {
+    //                 $columns    .= ', ';
+    //                 $values     .= ', ';
+    //             }
+    //         }
+    //         $columns .= ')';
+    //         $values .= ')';
+    //     }
+    //     $insert .= "{$columns} VALUES {$values}";
+    //     return $insert;
+    // }
+
+    public function insert(string $table)
     {
         $this->reset();
-        $insert     = "INSERT INTO {$table} ";
-        $columns    = '(';
-        $values     = '(';
-        if (!empty($params)) {
-            foreach($params as $column => $value) {
-                $this->params[] = $value;
-                $columns .= "{$column}";
-                $values  .= "?";
-                if (next($params)) {
-                    $columns    .= ', ';
-                    $values     .= ', ';
-                }
-            }
-            $columns .= ')';
-            $values .= ')';
-        }
-        $insert .= "{$columns} VALUES {$values}";
-        return $insert;
+        $this->sql['insert'] = "INSERT INTO {$table} ";
+
+        return $this;
     }
 
     /**
